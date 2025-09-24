@@ -5,7 +5,7 @@ import WeatherForecastDay from "./WeatherForecastDay";
 
 export default function WeatherForecast(props) {
   let [loaded, setLoaded] = useState(false);
-  let [forecast, setForecast] = useState([]);
+  let [forecast, setForecast] = useState(null);
 
   useEffect(() => {
     setLoaded(false);
@@ -29,11 +29,11 @@ export default function WeatherForecast(props) {
     return (
       <div className="WeatherForecast">
         <div className="row">
-          {forecast.map(function (day, index) {
+          {forecast.map(function (dailyForecast, index) {
             if (index < 5) {
               return (
                 <div className="col" key={index}>
-                  <WeatherForecastDay data={day} />
+                  <WeatherForecastDay data={dailyForecast} />
                 </div>
               );
             } else {
